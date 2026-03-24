@@ -45,11 +45,19 @@
             <div class="flex items-center text-gray-600">
               <span class="w-8 text-xl">📚</span>
               <div class="flex flex-wrap gap-2">
-                <span v-for="subj in member.subjects" :key="subj.id" class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-700">
-                  {{ subj.name }}
-                </span>
-                <span v-if="!member.subjects.length" class="text-xs font-bold italic text-gray-400">No subjects assigned</span>
-              </div>
+  <span
+    v-for="subj in member.subjects?.filter(s => s)"
+    :key="subj.id"
+    class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-700"
+  >
+    {{ subj.name }}
+  </span>
+
+  <span v-if="!member.subjects || !member.subjects.length"
+    class="text-xs font-bold italic text-gray-400">
+    No subjects assigned
+  </span>
+</div>
             </div>
           </div>
 
